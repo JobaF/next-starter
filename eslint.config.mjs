@@ -9,15 +9,16 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-export default [
+const config = [
   ...compat.config({
     extends: ["next/core-web-vitals", "next/typescript", "prettier"],
-    plugins: ["check-file"],
+    plugins: ["check-file", "n"],
     rules: {
       "prefer-arrow-callback": "error",
       "prefer-template": "error",
       semi: "error",
       quotes: ["error", "double"],
+      "n/no-process-env": "error",
       "check-file/filename-naming-convention": [
         "error",
         {
@@ -30,9 +31,11 @@ export default [
       "check-file/folder-naming-convention": [
         "error",
         {
-          "src/**": "KEBAB_CASE",
+          "src/**/!^[.*]": "KEBAB_CASE",
         },
       ],
     },
   }),
 ];
+
+export default config;
