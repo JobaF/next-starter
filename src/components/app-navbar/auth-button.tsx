@@ -20,9 +20,13 @@ export default function AuthButton({ minimal = true }: { minimal?: boolean }) {
   }
 
   if (status === "authenticated") {
+    const signOutClick = () => {
+      signOut({ callbackUrl: "/" });
+    };
+
     if (minimal) {
       return (
-        <Button onPress={() => signOut()} color="danger" variant="ghost">
+        <Button onPress={signOutClick} color="danger" variant="ghost">
           {!minimal && <IconBrandGoogle />}
           Sign out
         </Button>
@@ -45,7 +49,7 @@ export default function AuthButton({ minimal = true }: { minimal?: boolean }) {
             <p className="font-semibold">Signed in as</p>
             <p className="font-semibold">{data.user?.email}</p>
           </DropdownItem>
-          <DropdownItem key="sign-out" color="danger" onPress={() => signOut()}>
+          <DropdownItem key="sign-out" color="danger" onPress={signOutClick}>
             Sign Out
           </DropdownItem>
         </DropdownMenu>
@@ -54,8 +58,17 @@ export default function AuthButton({ minimal = true }: { minimal?: boolean }) {
   }
 
   return (
-    <Button onPress={() => signIn("google")} color="danger" variant="ghost">
-      {!minimal && <IconBrandGoogle />} Sign in
+    <Button
+      onPress={() =>
+        signIn("google", {
+          callbackUrl: "/profile",
+        })
+      }
+      color="danger"
+      variant="ghost"
+    >
+      <IconBrandGoogle />
+      Sign in
     </Button>
   );
 }
