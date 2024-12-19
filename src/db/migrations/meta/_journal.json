@@ -8,6 +8,13 @@
       "when": 1734461546312,
       "tag": "0000_salty_nomad",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1734552579084,
+      "tag": "0001_spotty_landau",
+      "breakpoints": true
     }
   ]
 }
