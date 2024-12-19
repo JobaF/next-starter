@@ -61,7 +61,7 @@ export default function AuthButton({ minimal = true }: { minimal?: boolean }) {
     <Button
       onPress={() =>
         signIn("google", {
-          callbackUrl: "/profile",
+          callbackUrl: "/profil",
         })
       }
       color="danger"

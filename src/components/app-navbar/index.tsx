@@ -22,18 +22,19 @@ export default function AppNavbar() {
   const { status } = useSession();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const menuItems = [
-    {
-      label: "Home",
-      href: "/",
-    },
-  ];
+  const menuItems = [];
 
   if (status === "authenticated") {
-    menuItems.push({
-      label: "Profile",
-      href: "/profile",
-    });
+    menuItems.push(
+      {
+        label: "Klassen",
+        href: "/klassen",
+      },
+      {
+        label: "Profil",
+        href: "/profil",
+      }
+    );
   }
 
   return (
@@ -44,8 +45,10 @@ export default function AppNavbar() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <IconPackage />
-          <p className="font-bold text-inherit">Next.js Starter</p>
+          <Link href="/" color="foreground" className="flex flex-row gap-2">
+            <IconPackage />
+            <p className="font-bold text-inherit">Lehrer App</p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
