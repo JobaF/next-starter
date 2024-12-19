@@ -7,8 +7,6 @@ import { IconMoon, IconSun } from "@tabler/icons-react";
 
 import useSystemTheme from "@/hooks/use-system-theme";
 
-// app/components/ThemeSwitcher.tsx
-
 export function ThemeSwitcher({ showLabel }: { showLabel?: boolean }) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useSystemTheme();
